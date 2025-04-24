@@ -5,7 +5,7 @@ const Education = () => {
   const education = [
     "Computer Engineering, UNAN (2017-2021)",
     "AWS Cloud Practitioner (2021)",
-    "POWER BI, UAN (2025)"
+    "POWER BI, UAM (2025)"
   ];
 
   return (

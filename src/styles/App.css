@@ -268,3 +268,72 @@ button:hover {
     padding: 3rem 0;
   }
 }
+
+
+/* Skills Section */
+.skills {
+  padding: 4rem 0;
+  background: var(--bg-color);
+}
+
+.skills-group {
+  margin-bottom: 3rem;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.skill-card {
+  background: var(--card-bg);
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-align: center;
+  transition: transform 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.skill-icon {
+  margin-bottom: 0.75rem;
+  color: var(--primary-color);
+  font-size: 2rem;
+}
+
+.skill-name {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.proficiency {
+  color: gold;
+  font-size: 0.9rem;
+}
+
+.proficiency .empty {
+  opacity: 0.3;
+}
+
+/* Tooltip */
+.custom-tooltip {
+  background: #333 !important;
+  color: white !important;
+  border-radius: 4px !important;
+  padding: 0.5rem 1rem !important;
+  font-size: 0.9rem !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .skills-grid {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 1rem;
+  }
+  
+  .skill-card {
+    padding: 1rem;
+  }
+}
