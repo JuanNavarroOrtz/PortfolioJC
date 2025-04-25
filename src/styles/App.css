@@ -34,65 +34,171 @@ h1, h2, h3 {
   padding: 0;
 }
 
+
+
 /* Header Styles with Photo */
-.hero {
-  background: linear-gradient(135deg, var(--dark) 0%, var(--primary) 100%);
-  color: var(--white);
-  padding: 5rem 0;
-  position: relative;
-  overflow: hidden;
-}
-
-.header-container {
-  display: flex;
-  align-items: center;
-  gap: 3rem;
-}
-
-.profile-photo-container {
-  position: relative;
-  width: 220px;
-  height: 220px;
-  flex-shrink: 0;
-}
-
-.profile-photo {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 50%;
-  position: relative;
-  z-index: 2;
-  box-shadow: var(--shadow);
-  border: 4px solid var(--white);
-}
-
-.header-content {
-  flex: 1;
-}
-
-.hero h1 {
-  font-size: 2.8rem;
-  margin-bottom: 0.5rem;
-}
-
-.hero h2 {
-  font-size: 1.5rem;
-  margin-bottom: 1.5rem;
-  font-weight: 400;
-  opacity: 0.9;
-}
-
-.contact-info {
+.profile-card {
+  font-family: 'Arial', sans-serif;
+  max-width: 280px;
+  margin: 0 auto;
+  padding: 30px 25px;
+  text-align: center;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   display: flex;
   flex-direction: column;
-  gap: 0.8rem;
+  gap: 8px;
+  position: relative; /* For absolute positioning of menu */
 }
 
-.contact-info span {
+.menu-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #7f8c8d;
+  padding: 5px;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 50px;
+  right: 15px;
+  background: white;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 10px 0;
+  width: 150px;
+  z-index: 10;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 8px 15px;
+  color: #34495e;
+  text-decoration: none;
+  text-align: left;
+  font-size: 14px;
+}
+
+.dropdown-menu a:hover {
+  background-color: #f5f5f5;
+}
+
+/* Rest of your existing styles... */
+/* Layout */
+.app-container {
   display: flex;
+  min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.sidebar {
+  width: 250px;
+  background: #2c3e50;
+  color: white;
+  padding: 20px 0;
+}
+
+.profile-card {
+  flex: 1;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 0.8rem;
+  justify-content: center;
+}
+
+/* Menu Styles */
+.menu-header {
+  padding: 15px 25px;
+  font-weight: 600;
+  font-size: 18px;
+  border-bottom: 1px solid #34495e;
+  margin-bottom: 15px;
+}
+
+.menu-items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu-items li {
+  padding: 12px 25px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.menu-items li:hover {
+  background: #34495e;
+}
+
+.menu-items li.active {
+  background: #3498db;
+}
+
+/* Profile Card Styles (unchanged from your design) */
+.profile-card {
+  width: 300px;
+  text-align: center;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.initial {
+  font-size: 72px;
+  font-weight: 700;
+  color: #111;
+  line-height: 1;
+  margin-bottom: 5px;
+}
+
+.name {
+  font-size: 24px;
+  font-weight: 600;
+  color: #222;
+  margin-bottom: 30px;
+}
+
+.greeting {
+  font-size: 18px;
+  color: #333;
+  line-height: 1.5;
+  margin-bottom: 5px;
+}
+
+.role {
+  font-size: 16px;
+  color: #666;
+  font-style: italic;
+  margin: 20px 0;
+}
+
+.expertise {
+  font-size: 14px;
+  color: #666;
+  padding-top: 15px;
+  border-top: 1px solid #eee;
+  margin-top: 15px;
+}
+
+.contact-cta {
+  margin-top: 25px;
+  font-size: 14px;
+  color: #0066cc;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.container-menu-icons{
+  display: flex;
+  justify-content: space-evenly ;
 }
 
 /* Skills Grid */

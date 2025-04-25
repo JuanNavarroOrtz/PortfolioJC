@@ -1,73 +1,90 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useState } from 'react';
 import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaLinkedinIn, FaGithub } from "react-icons/fa";
-import profilePhoto from "../../assets/profile.jpg";
 
-const Header = () => {
+const ProfileCard = () => {
+  const [activeMenu, setActiveMenu] = useState('home');
   const contactItems = [
-    { icon: <FaPhone aria-label="Phone" />, text: "+505 8961 1536" },
-    { icon: <FaEnvelope aria-label="Email" />, text: "juan.navarro.ortz@gmail.com"},
-    { icon: <FaMapMarkerAlt aria-label="Location" />, text: "Managua, Nicaragua" },
-    { 
-      icon: <FaLinkedinIn aria-label="LinkedIn" />, 
-      text: "linkedin.com/in/juannavarroortz", 
-      link: "https://linkedin.com/in/juannavarroortz" 
+    { icon: <FaEnvelope aria-label="Email" />, text: "juan.navarro.ortz@gmail.com" },
+    {
+      icon: <FaLinkedinIn aria-label="LinkedIn" />,
+      text: "linkedin.com/in/juannavarroortz",
+      link: "https://linkedin.com/in/juannavarroortz"
     },
-    { 
-      icon: <FaGithub aria-label="GitHub" />, 
-      text: "github.com/JuanNavarroOrtz", 
-      link: "https://github.com/JuanNavarroOrtz" 
+    {
+      icon: <FaGithub aria-label="GitHub" />,
+      text: "github.com/JuanNavarroOrtz",
+      link: "https://github.com/JuanNavarroOrtz"
     },
   ];
 
   return (
-    <motion.header
-      initial={{ opacity: 0, y: -50 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8 }}
-      className="hero"
-    >
-      <div className="container header-container">
-        <motion.div
-          initial={{ scale: 0.9 }}
-          animate={{ scale: 1 }}
-          transition={{ delay: 0.2, duration: 0.5 }}
-          className="profile-photo-container"
-        >
-          <img 
-            src={profilePhoto}
-            alt="Juan Navarro" 
-            className="profile-photo"            
-          />
-        </motion.div>
-
-        <div className="header-content">
-          <motion.h1 transition={{ delay: 0.3 }}>Juan Navarro</motion.h1>
-          <motion.h2 transition={{ delay: 0.4 }}>Full Stack Developer</motion.h2>
-          
-          <motion.div 
-            className="contact-info"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5, staggerChildren: 0.1 }}
+    <div className="app-container">
+      {/* Left Sidebar Menu */}
+      <div className="sidebar">
+        <div className="menu-header">Menu</div>
+        <ul className="menu-items">
+          <li
+            className={activeMenu === 'home' ? 'active' : ''}
+            onClick={() => setActiveMenu('home')}
           >
-            {contactItems.map((item, index) => (
-              <motion.span key={index} transition={{ delay: 0.1 * index }}>
-                {item.icon}{" "}
-                {item.link ? (
-                  <a href={item.link} target="_blank" rel="noopener noreferrer">
-                    {item.text}
-                  </a>
-                ) : (
-                  item.text
-                )}
-              </motion.span>
-            ))}
-          </motion.div>
+            Home
+          </li>
+          <li
+            className={activeMenu === 'about' ? 'active' : ''}
+            onClick={() => setActiveMenu('about')}
+          >
+            About
+          </li>
+          <li
+            className={activeMenu === 'portfolio' ? 'active' : ''}
+            onClick={() => setActiveMenu('portfolio')}
+          >
+            Portfolio
+          </li>
+          <li
+            className={activeMenu === 'services' ? 'active' : ''}
+            onClick={() => setActiveMenu('services')}
+          >
+            Services
+          </li>
+          <li
+            className={activeMenu === 'contact' ? 'active' : ''}
+            onClick={() => setActiveMenu('contact')}
+          >
+            Contact
+          </li>
+        </ul>
+        <div className='container-menu-icons'>
+          {contactItems.map((item, index) => (
+            <div key={index}>
+              <a href={item.link}>
+                {item.icon}
+              </a>
+            </div>
+          ))}
         </div>
       </div>
-    </motion.header>
+
+      {/* Profile Card (Right Content) */}
+      <div className="profile-card">
+        <div className="initial">J</div>
+        <div className="name">Jack</div>
+
+        <div className="greeting">
+          <div>Hi,</div>
+          <div>I'm Jack,</div>
+        </div>
+
+        <div className="role">web developer</div>
+
+        <div className="expertise">
+          Front End Developer / WordPress Expert
+        </div>
+
+        <div className="contact-cta">Contact me!</div>
+      </div>
+    </div>
   );
 };
 
-export default Header;
+export default ProfileCard;
