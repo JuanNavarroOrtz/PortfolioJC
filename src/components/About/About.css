@@ -1,0 +1,17 @@
+.about-section {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.about-title {
+  font-size: 2rem;
+  color: #34495e; /* Pickled Bluewood */
+  margin-bottom: 1.5rem;
+}
+
+.highlight {
+  color: #3182ce; /* Soft blue for emphasis */
+  font-weight: 600;
+}
+
