@@ -29,55 +29,53 @@ const Menu = () => {
   ];
   return (
     <>
-      <div className="sidebar">
-        <div className="menu-header">
-          <img
-            src={profileImg}
-            alt="Logo or header image"
-            className="sidebar-image image-style"
-            style={{
-              width: '70%',
-              maxWidth: '200px',
-              margin: '0 auto',
-              display: 'block',
-              padding: '10px 0'
-            }}
-          />
-        </div>
+      <div className="menu-header">
+        <img
+          src={profileImg}
+          alt="Logo or header image"
+          className="sidebar-image image-style"
+          style={{
+            width: '70%',
+            maxWidth: '200px',
+            margin: '0 auto',
+            display: 'block',
+            padding: '10px 0'
+          }}
+        />
+      </div>
 
-        <ul className="menu-items">
-          {menuItems.map((item, index) => (
-            <li
-              key={index}
-              className={activeMenu === `${item.name}` ? 'active' : ''}
-              onClick={() => setActiveMenu(item.name)}
+      <ul className="menu-items">
+        {menuItems.map((item, index) => (
+          <li
+            key={index}
+            className={activeMenu === `${item.name}` ? 'active' : ''}
+            onClick={() => setActiveMenu(item.name)}
+          >
+            {item.text}
+          </li>
+        ))}
+      </ul>
+
+      <div className='container-menu-icons'>
+        {contactItems.map((item, index) => (
+          <div key={index} className="icon-wrapper">
+            <a
+              href={item.link}
+              className="icon-link"
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              {item.text}
-            </li>
-          ))}
-        </ul>
-
-        <div className='container-menu-icons'>
-          {contactItems.map((item, index) => (
-            <div key={index} className="icon-wrapper">
-              <a
-                href={item.link}
-                className="icon-link"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {React.cloneElement(item.icon, {
-                  style: {
-                    color: 'white',
-                    fontSize: '24px',
-                    transition: 'all 0.3s ease'
-                  }
-                })}
-                <span className="tooltip">{item.text}</span>
-              </a>
-            </div>
-          ))}
-        </div>
+              {React.cloneElement(item.icon, {
+                style: {
+                  color: 'white',
+                  fontSize: '24px',
+                  transition: 'all 0.3s ease'
+                }
+              })}
+              <span className="tooltip">{item.text}</span>
+            </a>
+          </div>
+        ))}
       </div>
     </>
   )

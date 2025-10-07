@@ -7,18 +7,19 @@ import Footer from '../../components/Footer';
 const Portfolio = () => {
   return (
     <>
+      <Header />
       <div className='container'>
-        <div>
+        <div className="sidebar">
           <Menu />
         </div>
-        <div className='right-side'>
-          <Header />
+
+        <div class="main-container">
           <div className='card-body'>
             <About />
           </div>
-          <Footer />
         </div>
       </div>
+      <Footer />
     </>
   );
 };

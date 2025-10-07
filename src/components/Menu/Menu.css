@@ -1,11 +1,4 @@
 /*SIDEBAR*/
-.sidebar {
-  width: 100%;
-  background: var(--dark);
-  color: var(--white);
-  height: 100vh;
-}
-
 .sidebar-image {
   border-radius: 50%;
 }
