@@ -1,7 +1,10 @@
-const Header = () => {
+const Header = (props) => {
+  const {
+    foldMenu
+  } = props;
   return (
     <>
-      <header className="header-custom">
+      <header className={`header-custom ${!foldMenu ? 'folded' : ''}`}>
         WELCOME
       </header>
     </>

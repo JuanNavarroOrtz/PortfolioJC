@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Menu from '../../components/Menu';
 import './Portfolio.css';
 import About from '../../components/About';
@@ -5,21 +6,23 @@ import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 
 const Portfolio = () => {
+  const [foldMenu, setFoldMenu] = useState(false);
+
   return (
     <>
-      <Header />
+      <Header foldMenu={foldMenu} />
       <div className='container'>
-        <div className="sidebar">
-          <Menu />
+        <div className={`sidebar ${!foldMenu ? 'folded' : ''}`}>
+          <Menu foldMenu={foldMenu} setFoldMenu={setFoldMenu} />
         </div>
 
-        <div class="main-container">
+        <div class={`card-container ${!foldMenu ? 'folded' : ''}`}>
           <div className='card-body'>
             <About />
           </div>
         </div>
       </div>
-      <Footer />
+      <Footer foldMenu={foldMenu} />
     </>
   );
 };

@@ -24,6 +24,10 @@
     transition: background 0.3s;
     border-bottom: 1px solid var(--pickledBluewood);
   }
+
+  .sidebar-logo:hover {
+    transform: scale(1.05);
+  }
   
   .menu-items li:hover {
     background: var(--darkerSlateGray) ;
@@ -33,6 +37,28 @@
     background: var(--darkerSlateGray);
   }
 
+/*FOLD BUTTON AND LOGO*/
+.fold-button{
+  padding-left: 12px;
+  display: flex;
+  align-items: center;
+}
+
+.fold-menu {
+  position: relative;
+}
+
+.sidebar-logo {
+  /*filter: brightness(0) invert(1);  
+  Makes logo white */
+  transition: transform 0.3s ease;
+}
+
+.sidebar-logo:hover {
+  transform: scale(1.01);
+}
+
+/*END FOLD BUTTON AND LOGO*/
 
 /* MENU ICONS */
 .container-menu-icons {
@@ -100,6 +126,11 @@
 }
 
 .icon-link:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+  transform: translateX(calc(-50% + 20px)) translateY(0);
+}
+.fold-menu:hover .tooltip {
   visibility: visible;
   opacity: 1;
   transform: translateX(calc(-50% + 20px)) translateY(0);

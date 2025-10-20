@@ -45,20 +45,28 @@ body, html  {
   color: var(--white);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   padding: 20px 0;
   z-index: 10; /* make sure it stays on top */
 }
 
+.sidebar.folded {  
+  width: 62px;
+}
+
 /* Main content */
-.main-container {
+.card-container {
   margin-left: 250px; /* same as sidebar width */
   flex: 1;
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  padding: 20px;
+  padding: 66px 20px 20px;
   background: var(--light);
+}
+
+.card-container.folded{
+ margin-left: 72px;
 }
 
 /* card body*/
@@ -66,9 +74,8 @@ body, html  {
   background: var(--white);  
   border-radius: 0.75rem;
   border: 1px solid var(--shadow);  
-  width: 100%;
-  /* min-height: 80vh; */
-  min-height: calc(100vh - 87px); /* full height minus header + footer */ 
+  width: 100%;  
+  min-height: calc(100vh - 132px); /* full height minus header + footer */ 
 
 }
 
@@ -79,6 +86,17 @@ body, html  {
   border: 1px solid var(--shadow);
   position: static;
   bottom: 0;
+}
+.footer-custom.folded{  
+  padding-left: 94px;  
+}
+
+/* header*/
+.header-custom{
+  background: var(--white);
+}
+.header-custom.folded{  
+  padding-left: 94px;  
 }
 
 @media (max-width: 768px) {
