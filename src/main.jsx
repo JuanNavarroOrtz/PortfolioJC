@@ -1,9 +1,9 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import Portfolio from './pages/Portfolio/index.jsx';
+import MainPage from './pages/MainPage/index.jsx';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <Portfolio />
+    <MainPage />
   </StrictMode>
 );

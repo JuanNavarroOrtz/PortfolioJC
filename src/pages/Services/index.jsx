@@ -1,7 +1,7 @@
-const Portfolio = () => {
+const Services = () => {
   return (
     <section className="about-section">
-      <h2 className="about-title">Portfolio</h2>
+      <h2 className="about-title">Services</h2>
       <div className="about-content">
         <p className="about-text">
           Dedicated and experienced programmer with four years of expertise in software development,
@@ -15,4 +15,4 @@ const Portfolio = () => {
   );
 };
 
-export default Portfolio;
+export default Services;

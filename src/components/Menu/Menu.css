@@ -5,52 +5,65 @@
 
 /*Menu*/
 .menu-header {
-    padding: 15px 25px;
-    font-weight: 600;
-    font-size: 18px;
-    border-bottom: 1px solid var(--pickledBluewood);
-    margin-bottom: 15px;
-  }
+  padding: 15px 25px;
+  font-weight: 600;
+  font-size: 18px;
+  border-bottom: 1px solid var(--pickledBluewood);
+  margin-bottom: 15px;
+}
 
-  .menu-items {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .menu-items li {
-    padding: 12px 25px;
-    cursor: pointer;
-    transition: background 0.3s;
-    border-bottom: 1px solid var(--pickledBluewood);
-  }
+.menu-items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
 
-  .sidebar-logo:hover {
-    transform: scale(1.05);
-  }
-  
-  .menu-items li:hover {
-    background: var(--darkerSlateGray) ;
-  }
-  
-  .menu-items li.active {
-    background: var(--darkerSlateGray);
-  }
+.menu-items li {
+  padding: 12px 25px;
+  cursor: pointer;
+  transition: background 0.3s;
+  border-bottom: 1px solid var(--pickledBluewood);
+}
+
+.sidebar-logo:hover {
+  transform: scale(1.05);
+}
+
+.menu-items li:hover {
+  background: var(--darkerSlateGray);
+}
+
+.menu-items li.active {
+  background: var(--darkerSlateGray);
+}
 
 /*FOLD BUTTON AND LOGO*/
-.fold-button{
+.fold-button {
   padding-left: 12px;
   display: flex;
   align-items: center;
+}
+
+.fold-button.folded {
+  flex-direction: column;
+  padding-left: 0;
+  align-items: start;
 }
 
 .fold-menu {
   position: relative;
 }
 
+.icon-button {
+  background: transparent;
+  border: 0;
+  color: inherit;
+  cursor: pointer;
+  padding: 0;
+  font: inherit;
+}
+
 .sidebar-logo {
-  /*filter: brightness(0) invert(1);  
-  Makes logo white */
   transition: transform 0.3s ease;
 }
 
@@ -101,9 +114,9 @@
   padding: 8px 12px;
   position: absolute;
   z-index: 1000;
-  bottom: calc(100% + 10px); /* 10px above icon */
+  bottom: calc(100% + 10px);
   left: 50%;
-  transform: translateX(calc(-50% + 20px)); /* Shift right */
+  transform: translateX(calc(-50% + 20px));
   opacity: 0;
   transition: opacity 0.2s ease-out, transform 0.2s ease-out;
   font-size: 14px;
@@ -118,7 +131,7 @@
   content: '';
   position: absolute;
   top: 100%;
-  left: calc(50% - 20px); /* Align with shifted tooltip */
+  left: calc(50% - 20px);
   transform: translateX(-50%);
   border-width: 6px;
   border-style: solid;
@@ -130,6 +143,7 @@
   opacity: 1;
   transform: translateX(calc(-50% + 20px)) translateY(0);
 }
+
 .fold-menu:hover .tooltip {
   visibility: visible;
   opacity: 1;
@@ -146,10 +160,8 @@
     white-space: normal;
     max-width: 180px;
   }
-  
+
   .tooltip::after {
     left: 20px;
   }
 }
-
-

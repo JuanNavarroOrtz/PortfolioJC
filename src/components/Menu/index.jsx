@@ -3,13 +3,16 @@ import * as Icons from 'react-icons/fa';
 import './Menu.css';
 import profileImg from '../../assets/Img/profile.jpg';
 import Logo from '../../assets/Img/Logo.png';
+import JnLogo from '../../assets/Img/JnLogo.png';
 
 const Menu = (props) => {
   const {
     foldMenu,
     setFoldMenu
   } = props;
+
   const [activeMenu, setActiveMenu] = useState('home');
+
   const menuItems = [{
     name: 'about', text: 'About', icon: 'FaUser'
   }, {
@@ -19,30 +22,41 @@ const Menu = (props) => {
   }, {
     name: 'contact', text: 'Contact', icon: 'FaPhone'
   }];
+
   const contactItems = [
-    { icon: <Icons.FaEnvelope aria-label="Email" />, text: "juan.navarro.ortz@gmail.com" },
+    {
+      icon: <Icons.FaEnvelope aria-label="Email" />,
+      text: 'juan.navarro.ortz@gmail.com',
+      link: 'mailto:juan.navarro.ortz@gmail.com'
+    },
     {
       icon: <Icons.FaLinkedinIn aria-label="LinkedIn" />,
-      text: "linkedin.com/in/juannavarroortz",
-      link: "https://linkedin.com/in/juannavarroortz"
+      text: 'linkedin.com/in/juannavarroortz',
+      link: 'https://linkedin.com/in/juannavarroortz'
     },
     {
       icon: <Icons.FaGithub aria-label="GitHub" />,
-      text: "github.com/JuanNavarroOrtz",
-      link: "https://github.com/JuanNavarroOrtz"
-    },
+      text: 'github.com/JuanNavarroOrtz',
+      link: 'https://github.com/JuanNavarroOrtz'
+    }
   ];
+
   return (
     <>
-      <div className='fold-button'>
-        <a className='icon-link' onClick={() => setFoldMenu(!foldMenu)}>
+      <div className={`fold-button ${!foldMenu ? 'folded' : ''}`}>
+        <button
+          type='button'
+          className='icon-link icon-button'
+          onClick={() => setFoldMenu(!foldMenu)}
+          aria-label={foldMenu ? 'Collapse menu' : 'Expand menu'}
+        >
           <Icons.FaBars />
-        </a>
+        </button>
         {foldMenu &&
           <img
             src={Logo}
-            alt="Sistemas JN Logo"
-            className="sidebar-logo"
+            alt='Sistemas JN Logo'
+            className='sidebar-logo'
             style={{
               width: '60%',
               height: '80%',
@@ -50,13 +64,24 @@ const Menu = (props) => {
               marginLeft: '10px'
             }}
           />}
+        {!foldMenu &&
+          <img
+            src={JnLogo}
+            alt='JN Logo'
+            className='sidebar-logo'
+            style={{
+              width: '62%',
+              maxWidth: '150px',
+              marginLeft: '5px'
+            }}
+          />}
       </div>
       {foldMenu &&
-        <div className="menu-header">
+        <div className='menu-header'>
           <img
             src={profileImg}
-            alt="Logo or header image"
-            className="sidebar-image image-style"
+            alt='Logo or header image'
+            className='sidebar-image image-style'
             style={{
               width: '70%',
               maxWidth: '200px',
@@ -68,7 +93,7 @@ const Menu = (props) => {
         </div>
       }
 
-      <ul className="menu-items">
+      <ul className='menu-items'>
         {menuItems.map((item, index) => {
           const IconComponent = Icons[item.icon];
           return (<li
@@ -77,10 +102,10 @@ const Menu = (props) => {
             onClick={() => setActiveMenu(item.name)}
           >
             {!foldMenu &&
-              <a className='fold-menu'>
+              <button type='button' className='fold-menu icon-button'>
                 <IconComponent />
-                <span className="tooltip">{item.name}</span>
-              </a>}
+                <span className='tooltip'>{item.text}</span>
+              </button>}
 
             {foldMenu && <>
               <IconComponent />
@@ -88,33 +113,40 @@ const Menu = (props) => {
               {item.text}
             </>
             }
-          </li>)
+          </li>);
         })}
       </ul>
 
       {foldMenu && <div className='container-menu-icons'>
         {contactItems.map((item, index) => (
-          <div key={index} className="icon-wrapper">
-            <a
-              href={item.link}
-              className="icon-link"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {React.cloneElement(item.icon, {
-                style: {
-                  color: 'white',
-                  fontSize: '24px',
-                  transition: 'all 0.3s ease'
-                }
-              })}
-              <span className="tooltip">{item.text}</span>
-            </a>
+          <div key={index} className='icon-wrapper'>
+            {item.link ? (
+              <a
+                href={item.link}
+                className='icon-link'
+                target='_blank'
+                rel='noopener noreferrer'
+              >
+                {React.cloneElement(item.icon, {
+                  style: {
+                    color: 'white',
+                    fontSize: '24px',
+                    transition: 'all 0.3s ease'
+                  }
+                })}
+                <span className='tooltip'>{item.text}</span>
+              </a>
+            ) : (
+              <span className='icon-link'>
+                {item.icon}
+                <span className='tooltip'>{item.text}</span>
+              </span>
+            )}
           </div>
         ))}
       </div>}
     </>
-  )
-}
+  );
+};
 
 export default Menu;
