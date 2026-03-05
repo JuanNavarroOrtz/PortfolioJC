@@ -8,10 +8,15 @@ import JnLogo from '../../assets/Img/JnLogo.png';
 const Menu = (props) => {
   const {
     foldMenu,
-    setFoldMenu
+    setFoldMenu,
+    isMobile,
+    mobileMenuOpen,
+    setMobileMenuOpen,
+    currentSection,
+    setCurrentSection
   } = props;
 
-  const [activeMenu, setActiveMenu] = useState('home');
+  const [activeMenu, setActiveMenu] = useState(currentSection || 'about');
 
   const menuItems = [{
     name: 'about', text: 'About', icon: 'FaUser'
@@ -47,104 +52,102 @@ const Menu = (props) => {
         <button
           type='button'
           className='icon-link icon-button'
-          onClick={() => setFoldMenu(!foldMenu)}
-          aria-label={foldMenu ? 'Collapse menu' : 'Expand menu'}
+          onClick={() => {
+            if (isMobile) {
+              setMobileMenuOpen(!mobileMenuOpen);
+              return;
+            }
+            setFoldMenu(!foldMenu);
+          }}
+          aria-label={isMobile ? (mobileMenuOpen ? 'Close menu' : 'Open menu') : (foldMenu ? 'Collapse menu' : 'Expand menu')}
         >
           <Icons.FaBars />
         </button>
-        {foldMenu &&
+        {(isMobile || foldMenu) &&
           <img
             src={Logo}
             alt='Sistemas JN Logo'
-            className='sidebar-logo'
-            style={{
-              width: '60%',
-              height: 'auto',
-              maxWidth: '150px',
-              marginLeft: '10px'
-            }}
+            className='sidebar-logo sidebar-logo-main'
           />}
-        {!foldMenu &&
+        {(!isMobile && !foldMenu) &&
           <img
             src={JnLogo}
             alt='JN Logo'
-            className='sidebar-logo'
-            style={{
-              width: '62%',
-              maxWidth: '150px',
-              marginLeft: '5px'
-            }}
+            className='sidebar-logo sidebar-logo-compact'
           />}
       </div>
-      {foldMenu &&
-        <div className='menu-header'>
-          <img
-            src={profileImg}
-            alt='Logo or header image'
-            className='sidebar-image image-style'
-            style={{
-              width: '70%',
-              maxWidth: '200px',
-              margin: '0 auto',
-              display: 'block',
-              padding: '10px 0'
-            }}
-          />
-        </div>
-      }
-
-      <ul className='menu-items'>
-        {menuItems.map((item, index) => {
-          const IconComponent = Icons[item.icon];
-          return (<li
-            key={index}
-            className={activeMenu === `${item.name}` ? 'active' : ''}
-            onClick={() => setActiveMenu(item.name)}
-          >
-            {!foldMenu &&
-              <button type='button' className='fold-menu icon-button'>
-                <IconComponent />
-                <span className='tooltip'>{item.text}</span>
-              </button>}
-
-            {foldMenu && <>
-              <IconComponent />
-              {' '}
-              {item.text}
-            </>
-            }
-          </li>);
-        })}
-      </ul>
-
-      {foldMenu && <div className='container-menu-icons'>
-        {contactItems.map((item, index) => (
-          <div key={index} className='icon-wrapper'>
-            {item.link ? (
-              <a
-                href={item.link}
-                className='icon-link'
-                target='_blank'
-                rel='noopener noreferrer'
-              >
-                {React.cloneElement(item.icon, {
-                  style: {
-                    color: 'white',
-                    fontSize: '24px',
-                    transition: 'all 0.3s ease'
-                  }
-                })}
-                <span className='tooltip'>{item.text}</span>
-              </a>
-            ) : (
-              <span className='icon-link'>
-                {item.icon}
-                <span className='tooltip'>{item.text}</span>
-              </span>
-            )}
+      <div className={`menu-panel ${isMobile ? (mobileMenuOpen ? 'open' : '') : ''}`}>
+        {!isMobile && foldMenu &&
+          <div className='menu-header'>
+            <img
+              src={profileImg}
+              alt='Logo or header image'
+              className='sidebar-image image-style sidebar-profile'
+            />
           </div>
-        ))}
-      </div>}
+        }
+
+        <ul className='menu-items'>
+          {menuItems.map((item, index) => {
+            const IconComponent = Icons[item.icon];
+            return (<li
+              key={index}
+              className={activeMenu === `${item.name}` ? 'active' : ''}
+              onClick={() => {
+                setActiveMenu(item.name);
+                if (setCurrentSection) {
+                  setCurrentSection(item.name);
+                }
+                if (isMobile) {
+                  setMobileMenuOpen(false);
+                }
+              }}
+            >
+              {(!foldMenu && !isMobile) &&
+                <button type='button' className='fold-menu icon-button'>
+                  <IconComponent />
+                  <span className='tooltip'>{item.text}</span>
+                </button>}
+
+              {(foldMenu || isMobile) && <>
+                <IconComponent />
+                {' '}
+                {item.text}
+              </>
+              }
+            </li>);
+          })}
+        </ul>
+
+        {!isMobile && foldMenu && <div className='container-menu-icons'>
+          {contactItems.map((item, index) => (
+            <div key={index} className='icon-wrapper'>
+              {item.link ? (
+                <a
+                  href={item.link}
+                  className='icon-link'
+                  target='_blank'
+                  rel='noopener noreferrer'
+                >
+                  {React.cloneElement(item.icon, {
+                    style: {
+                      color: 'white',
+                      fontSize: '24px',
+                      transition: 'all 0.3s ease'
+                    }
+                  })}
+                  <span className='tooltip'>{item.text}</span>
+                </a>
+              ) : (
+                <span className='icon-link'>
+                  {item.icon}
+                  <span className='tooltip'>{item.text}</span>
+                </span>
+              )}
+            </div>
+          ))}
+        </div>}
+      </div>
     </>
   );
 };
