@@ -8,7 +8,7 @@ const index = (props) => {
   return (
     <>
       <footer className={`footer-custom ${!foldMenu ? 'folded' : ''}`}>
-        Copyright Juan Navarro © {now.getFullYear()}
+        Copyright Juan Navarro Â© {now.getFullYear()}
       </footer>
     </>
   );

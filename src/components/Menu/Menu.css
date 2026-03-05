@@ -42,16 +42,32 @@
   padding-left: 12px;
   display: flex;
   align-items: center;
+  min-height: var(--header-height);
 }
 
 .fold-button.folded {
   flex-direction: column;
   padding-left: 0;
-  align-items: start;
+  align-items: center;
 }
 
 .fold-menu {
   position: relative;
+}
+
+.sidebar.folded .menu-items li {
+  padding: 12px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.sidebar.folded .fold-menu {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .icon-button {

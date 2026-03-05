@@ -9,6 +9,9 @@
   --darkerSlateGray: #2d3748;
   --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   --border: #e5e7eb;
+  --sidebar-width: 250px;
+  --sidebar-folded-width: 62px;
+  --header-height: 52px;
 }
 
 body, html {
@@ -28,14 +31,17 @@ body, html {
 /* header */
 .header-custom {
   background: var(--white);
-  padding: 10px 20px;
+  height: var(--header-height);
+  padding: 0 20px;
   border-bottom: 1px solid var(--border);
   box-shadow: var(--shadow);
   position: fixed;
   top: 0;
-  left: 250px;
-  width: calc(100% - 250px);
+  left: var(--sidebar-width);
+  width: calc(100% - var(--sidebar-width));
   z-index: 9;
+  display: flex;
+  align-items: center;
 }
 
 /* Sidebar */
@@ -43,24 +49,24 @@ body, html {
   position: fixed;
   top: 0;
   left: 0;
-  width: 250px;
+  width: var(--sidebar-width);
   height: 100vh;
   background: var(--dark);
   color: var(--white);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  padding: 20px 0;
+  padding: 0;
   z-index: 10;
 }
 
 .sidebar.folded {
-  width: 62px;
+  width: var(--sidebar-folded-width);
 }
 
 /* Main content */
 .card-container {
-  margin-left: 250px;
+  margin-left: var(--sidebar-width);
   flex: 1;
   display: flex;
   align-items: flex-start;
@@ -70,7 +76,7 @@ body, html {
 }
 
 .card-container.folded {
-  margin-left: 72px;
+  margin-left: var(--sidebar-folded-width);
 }
 
 /* card body*/
@@ -80,7 +86,8 @@ body, html {
   border: 1px solid var(--border);
   box-shadow: var(--shadow);
   width: 100%;
-  min-height: calc(100vh - 132px);
+  min-height: calc(100dvh - 134px);
+  box-sizing: border-box;
 }
 
 /* footer */
@@ -89,17 +96,17 @@ body, html {
   padding: 10px 20px;
   border-top: 1px solid var(--border);
   box-shadow: var(--shadow);
-  margin-left: 250px;
+  margin-left: var(--sidebar-width);
 }
 
 .footer-custom.folded {
-  margin-left: 72px;
+  margin-left: var(--sidebar-folded-width);
 }
 
 /* header folded */
 .header-custom.folded {
-  left: 72px;
-  width: calc(100% - 72px);
+  left: var(--sidebar-folded-width);
+  width: calc(100% - var(--sidebar-folded-width));
 }
 
 /* CARD */

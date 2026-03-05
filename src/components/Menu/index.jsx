@@ -59,7 +59,7 @@ const Menu = (props) => {
             className='sidebar-logo'
             style={{
               width: '60%',
-              height: '80%',
+              height: 'auto',
               maxWidth: '150px',
               marginLeft: '10px'
             }}
