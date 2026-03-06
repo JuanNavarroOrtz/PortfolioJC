@@ -1,3 +1,4 @@
 .header-custom{
-  background: var(--color-bg-surface);
+  background: #ffffff;
+  color: var(--color-text-title);
 }

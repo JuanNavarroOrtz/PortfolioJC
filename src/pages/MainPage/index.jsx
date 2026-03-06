@@ -3,10 +3,13 @@ import Menu from '../../components/Menu';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 import './mainPage.css';
-import About from '../About';
-import PortfolioPage from '../Portfolio';
-import Services from '../Services';
+import Home from '../Home';
+import Experience from '../Experience';
+import Projects from '../Projects';
+import TechStack from '../TechStack';
+import Education from '../Education';
 import Contact from '../Contact';
+import { menuItems } from '../../utils/data';
 
 const MOBILE_BREAKPOINT = 640;
 
@@ -17,7 +20,18 @@ const Portfolio = () => {
   });
   const [foldMenu, setFoldMenu] = useState(true);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [currentSection, setCurrentSection] = useState('about');
+  const [currentSection, setCurrentSection] = useState(menuItems[0].name);
+
+  const sectionComponents = {
+    home: Home,
+    experience: Experience,
+    projects: Projects,
+    techStack: TechStack,
+    education: Education,
+    contact: Contact
+  };
+
+  const SectionComponent = sectionComponents[currentSection] || Home;
 
   useEffect(() => {
     if (typeof window === 'undefined') return undefined;
@@ -70,10 +84,7 @@ const Portfolio = () => {
 
         <div className={`card-container ${!foldMenu ? 'folded' : ''}`}>
           <div className='card-body'>
-            {currentSection === 'about' && <About />}
-            {currentSection === 'portfolio' && <PortfolioPage />}
-            {currentSection === 'services' && <Services />}
-            {currentSection === 'contact' && <Contact />}
+            <SectionComponent />
           </div>
         </div>
       </div>

@@ -29,10 +29,12 @@
 /*Menu*/
 .menu-header {
   padding: var(--space-lg) var(--space-2xl);
-  font-weight: 600;
-  font-size: 18px;
+  font-weight: var(--font-weight-title);
+  font-size: var(--font-size-subtitle);
+  letter-spacing: var(--letter-spacing-title);
   border-bottom: 1px solid var(--color-border-sidebar);
   margin-bottom: var(--space-lg);
+  text-transform: uppercase;
 }
 
 .menu-items {
@@ -50,6 +52,9 @@
   transition: background var(--motion-base);
   border-bottom: 1px solid var(--color-border-sidebar);
   line-height: 1.25;
+  font-size: var(--font-size-body);
+  font-weight: 600;
+  letter-spacing: 0.01em;
 }
 
 .menu-items li svg {
@@ -177,8 +182,8 @@
   transform: translateX(calc(-50% + 20px));
   opacity: 0;
   transition: opacity var(--motion-fast) ease-out, transform var(--motion-fast) ease-out;
-  font-size: 14px;
-  font-weight: normal;
+  font-size: var(--font-size-meta);
+  font-weight: var(--font-weight-body);
   white-space: nowrap;
   box-shadow: var(--shadow-sm);
   pointer-events: none;
@@ -263,7 +268,7 @@
     overflow-y: auto;
     background: var(--color-bg-sidebar);
     border-radius: 14px;
-    box-shadow: 0 16px 28px rgba(0, 0, 0, 0.28);
+    box-shadow: 0 18px 32px rgba(5, 40, 108, 0.34);
     border: 1px solid var(--color-border-sidebar);
     z-index: 21;
     pointer-events: auto;

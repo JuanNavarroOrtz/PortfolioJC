@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import * as Icons from 'react-icons/fa';
 import './Menu.css';
 import profileImg from '../../assets/Img/profile.jpg';
-import Logo from '../../assets/Img/Logo.png';
 import JnLogo from '../../assets/Img/JnLogo.png';
+import { menuItems } from '../../utils/data';
+import { contactItems } from '../../utils/data';
 
 const Menu = (props) => {
   const {
@@ -16,35 +17,13 @@ const Menu = (props) => {
     setCurrentSection
   } = props;
 
-  const [activeMenu, setActiveMenu] = useState(currentSection || 'about');
+  const defaultSection = menuItems[0]?.name || 'home';
+  const [activeMenu, setActiveMenu] = useState(currentSection || defaultSection);
 
-  const menuItems = [{
-    name: 'about', text: 'About', icon: 'FaUser'
-  }, {
-    name: 'portfolio', text: 'Portfolio', icon: 'FaBriefcase'
-  }, {
-    name: 'services', text: 'Services', icon: 'FaLaptopCode'
-  }, {
-    name: 'contact', text: 'Contact', icon: 'FaPhone'
-  }];
+  useEffect(() => {
+    setActiveMenu(currentSection || defaultSection);
+  }, [currentSection]);
 
-  const contactItems = [
-    {
-      icon: <Icons.FaEnvelope aria-label="Email" />,
-      text: 'juan.navarro.ortz@gmail.com',
-      link: 'mailto:juan.navarro.ortz@gmail.com'
-    },
-    {
-      icon: <Icons.FaLinkedinIn aria-label="LinkedIn" />,
-      text: 'linkedin.com/in/juannavarroortz',
-      link: 'https://linkedin.com/in/juannavarroortz'
-    },
-    {
-      icon: <Icons.FaGithub aria-label="GitHub" />,
-      text: 'github.com/JuanNavarroOrtz',
-      link: 'https://github.com/JuanNavarroOrtz'
-    }
-  ];
 
   return (
     <>
@@ -65,8 +44,8 @@ const Menu = (props) => {
         </button>
         {(isMobile || foldMenu) &&
           <img
-            src={Logo}
-            alt='Sistemas JN Logo'
+            src={JnLogo}
+            alt='JN Logo'
             className='sidebar-logo sidebar-logo-main'
           />}
         {(!isMobile && !foldMenu) &&
@@ -81,17 +60,17 @@ const Menu = (props) => {
           <div className='menu-header'>
             <img
               src={profileImg}
-              alt='Logo or header image'
+              alt='Profile'
               className='sidebar-image image-style sidebar-profile'
             />
           </div>
         }
 
         <ul className='menu-items'>
-          {menuItems.map((item, index) => {
+          {menuItems.map((item) => {
             const IconComponent = Icons[item.icon];
             return (<li
-              key={index}
+              key={item.name}
               className={activeMenu === `${item.name}` ? 'active' : ''}
               onClick={() => {
                 setActiveMenu(item.name);
@@ -122,28 +101,34 @@ const Menu = (props) => {
         {!isMobile && foldMenu && <div className='container-menu-icons'>
           {contactItems.map((item, index) => (
             <div key={index} className='icon-wrapper'>
-              {item.link ? (
-                <a
-                  href={item.link}
-                  className='icon-link'
-                  target='_blank'
-                  rel='noopener noreferrer'
-                >
-                  {React.cloneElement(item.icon, {
-                    style: {
-                      color: 'white',
-                      fontSize: '24px',
-                      transition: 'all 0.3s ease'
-                    }
-                  })}
-                  <span className='tooltip'>{item.text}</span>
-                </a>
-              ) : (
-                <span className='icon-link'>
-                  {item.icon}
-                  <span className='tooltip'>{item.text}</span>
-                </span>
-              )}
+              {(() => {
+                const ContactIcon = Icons[item.icon];
+                return item.link ? (
+                  <a
+                    href={item.link}
+                    className='icon-link'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                  >
+                    {ContactIcon ? (
+                      <ContactIcon
+                        aria-label={item.ariaLabel}
+                        style={{
+                          color: 'white',
+                          fontSize: '24px',
+                          transition: 'all 0.3s ease'
+                        }}
+                      />
+                    ) : null}
+                    <span className='tooltip'>{item.text}</span>
+                  </a>
+                ) : (
+                  <span className='icon-link'>
+                    {ContactIcon ? <ContactIcon aria-label={item.ariaLabel} /> : null}
+                    <span className='tooltip'>{item.text}</span>
+                  </span>
+                );
+              })()}
             </div>
           ))}
         </div>}

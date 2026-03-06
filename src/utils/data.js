@@ -1,23 +1,25 @@
-const menuItems = [{
-  name: 'about', text: 'About', icon: 'FaUser'
-}, {
-  name: 'portfolio', text: 'Portfolio', icon: 'FaBriefcase'
-}, {
-  name: 'services', text: 'Services', icon: 'FaLaptopCode'
-}, {
-  name: 'contact', text: 'Contact', icon: 'FaPhone'
-}];
+export const menuItems = [
+  { name: 'home', text: 'Home', icon: 'FaHome' },
+  { name: 'experience', text: 'Experience', icon: 'FaBriefcase' },
+  { name: 'projects', text: 'Projects', icon: 'FaProjectDiagram' },
+  { name: 'techStack', text: 'Tech Stack', icon: 'FaLaptopCode' },
+  { name: 'education', text: 'Education', icon: 'FaGraduationCap' },
+  { name: 'contact', text: 'Contact', icon: 'FaPhone' }
+];
 
-const contactItems = [
-  { icon: <Icons.FaEnvelope aria-label="Email" />, text: "juan.navarro.ortz@gmail.com" },
+
+export const contactItems = [
+  { icon: 'FaEnvelope', ariaLabel: 'Email', text: 'juan.navarro.ortz@gmail.com' },
   {
-    icon: <Icons.FaLinkedinIn aria-label="LinkedIn" />,
-    text: "linkedin.com/in/juannavarroortz",
-    link: "https://linkedin.com/in/juannavarroortz"
+    icon: 'FaLinkedinIn',
+    ariaLabel: 'LinkedIn',
+    text: 'linkedin.com/in/juannavarroortz',
+    link: 'https://linkedin.com/in/juannavarroortz'
   },
   {
-    icon: <Icons.FaGithub aria-label="GitHub" />,
-    text: "github.com/JuanNavarroOrtz",
-    link: "https://github.com/JuanNavarroOrtz"
-  },
+    icon: 'FaGithub',
+    ariaLabel: 'GitHub',
+    text: 'github.com/JuanNavarroOrtz',
+    link: 'https://github.com/JuanNavarroOrtz'
+  }
 ];

@@ -1,4 +1,4 @@
-const index = (props) => {
+const Footer = (props) => {
   const {
     foldMenu
   } = props;
@@ -6,12 +6,10 @@ const index = (props) => {
   const now = new Date();
 
   return (
-    <>
-      <footer className={`footer-custom ${!foldMenu ? 'folded' : ''}`}>
-        Copyright Juan Navarro © {now.getFullYear()}
-      </footer>
-    </>
+    <footer className={`footer-custom ${!foldMenu ? 'folded' : ''}`}>
+      Copyright Juan Navarro © {now.getFullYear()}
+    </footer>
   );
 };
 
-export default index;
+export default Footer;

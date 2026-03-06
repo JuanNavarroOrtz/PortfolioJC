@@ -1,7 +1,14 @@
+import { FaBriefcase } from 'react-icons/fa';
+
 const Portfolio = () => {
   return (
-    <section className='about-section'>
-      <h2 className='about-title'>Work Experience</h2>
+    <section className='about-section resume-style'>
+      <div className='section-heading'>
+        <span className='section-icon' aria-hidden='true'>
+          <FaBriefcase />
+        </span>
+        <h2 className='about-title'>Work Experience</h2>
+      </div>
       <div className='experience-timeline'>
         <div className='experience-item'>
           <article className='experience-card'>
@@ -9,7 +16,7 @@ const Portfolio = () => {
               <h3 className='experience-company'>ULTRAVAL</h3>
               <span className='experience-dates'>2022 - Present</span>
             </div>
-            <p className='about-text'><span className='highlight'>Developer</span></p>
+            <p className='about-text experience-role'>Developer</p>
             <ul className='experience-list'>
               <li>Developed treasury and cash logistics systems with C#, ASP.NET MVC, Web API, LINQ and T-SQL.</li>
               <li>Built SSRS financial reports and optimized complex SQL queries.</li>
@@ -24,7 +31,7 @@ const Portfolio = () => {
               <h3 className='experience-company'>I-CARGO</h3>
               <span className='experience-dates'>2023 - Present</span>
             </div>
-            <p className='about-text'><span className='highlight'>Full Stack Developer (Freelance, Part-time)</span></p>
+            <p className='about-text experience-role'>Full Stack Developer (Freelance, Part-time)</p>
             <ul className='experience-list'>
               <li>Designed and built a logistics platform from scratch using Django REST Framework, PostgreSQL and React.</li>
               <li>Implemented quotation, shipping order (SO), booking and bill of lading (BL) workflows.</li>
@@ -39,7 +46,7 @@ const Portfolio = () => {
               <h3 className='experience-company'>Almacenadora LAFISE</h3>
               <span className='experience-dates'>2020 - 2022</span>
             </div>
-            <p className='about-text'><span className='highlight'>Software Development Role</span></p>
+            <p className='about-text experience-role'>Software Development Role</p>
             <ul className='experience-list'>
               <li>Maintained financial and warehouse systems with ASP.NET MVC, C#, Dapper and SQL Server.</li>
               <li>Implemented complex T-SQL logic, stored procedures and financial reporting modules.</li>
