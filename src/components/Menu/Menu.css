@@ -12,18 +12,20 @@
 }
 
 .sidebar-logo-main {
-  width: 128px;
+  width: 120px;
   height: auto;
-  max-width: 128px;
-  margin-left: var(--space-sm);
+  max-width: 120px;
+  margin-left: var(--space-xs);
   display: block;
+  opacity: 0.96;
 }
 
 .sidebar-logo-compact {
-  width: 92px;
-  max-width: 92px;
-  margin-left: 5px;
+  width: 72px;
+  max-width: 72px;
+  margin-left: 4px;
   display: block;
+  opacity: 0.92;
 }
 
 /*Menu*/
@@ -80,6 +82,7 @@
   padding-left: var(--space-md);
   display: flex;
   align-items: center;
+  gap: 6px;
   min-height: var(--layout-header);
 }
 
@@ -127,11 +130,12 @@
 }
 
 .sidebar-logo {
-  transition: transform var(--motion-base) ease;
+  transition: transform var(--motion-base) ease, opacity var(--motion-base) ease;
 }
 
 .sidebar-logo:hover {
-  transform: scale(1.01);
+  transform: scale(1.02);
+  opacity: 1;
 }
 
 /*END FOLD BUTTON AND LOGO*/
@@ -247,14 +251,14 @@
   }
 
   .sidebar-logo-main {
-    width: 110px;
-    max-width: 110px;
+    width: 96px;
+    max-width: 96px;
     margin-left: 0;
   }
 
   .sidebar-logo-compact {
-    width: 94px;
-    max-width: 94px;
+    width: 78px;
+    max-width: 78px;
     margin-left: 0;
   }
 

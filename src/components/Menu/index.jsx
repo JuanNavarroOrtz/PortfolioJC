@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import * as Icons from 'react-icons/fa';
 import './Menu.css';
 import profileImg from '../../assets/Img/profile.jpg';
-import JnLogo from '../../assets/Img/JnLogo.png';
+import JnLogo from '../../assets/Img/test3.png';
 import { menuItems } from '../../utils/data';
 import { contactItems } from '../../utils/data';
 
