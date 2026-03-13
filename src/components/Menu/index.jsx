@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import * as Icons from 'react-icons/fa';
 import './Menu.css';
 import profileImg from '../../assets/Img/profile.jpg';
-import JnLogo from '../../assets/Img/JnDev2.png';
+import JnLogo from '../../assets/Img/devjn.png';
 import { menuItems } from '../../utils/data';
 import { contactItems } from '../../utils/data';
 
