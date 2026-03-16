@@ -1,66 +1,80 @@
-const Services = () => {
+import { FaArrowRight, FaCertificate, FaGraduationCap } from 'react-icons/fa';
+import { educationItems } from '../../utils/data';
+
+const Education = () => {
+  const { featuredCertification, educationHistory } = educationItems;
+
   return (
-    <section className='about-section'>
-      <h2 className='about-title'>Tech Stack</h2>
-      <div className='skills-grid'>
-        <article className='skills-group'>
-          <h3 className='skills-title'>Frontend</h3>
-          <div className='skills-tags'>
-            <span className='skill-tag'>React</span>
-            <span className='skill-tag'>React Native</span>
-          </div>
-        </article>
+    <section className='about-section education-section'>
+      <div className='section-heading'>
+        <span className='section-icon' aria-hidden='true'>
+          <FaGraduationCap />
+        </span>
+        <h2 className='about-title'>Education</h2>
+      </div>
+      
+      <article className='project-card project-card-featured education-featured'>
+        <div className='project-media-shell education-media-shell'>
+          <img
+            src={featuredCertification.image}
+            alt={featuredCertification.imageAlt}
+            className='project-media'
+          />      
+        </div>
 
-        <article className='skills-group'>
-          <h3 className='skills-title'>Backend</h3>
-          <div className='skills-tags'>
-            <span className='skill-tag'>C#</span>
-            <span className='skill-tag'>ASP.NET MVC</span>
-            <span className='skill-tag'>Web API</span>
-            <span className='skill-tag'>LINQ</span>
-            <span className='skill-tag'>Django REST</span>
-            <span className='skill-tag'>Node.js (Express)</span>
-          </div>
-        </article>
+        <div className='project-content'>
+          <div className='project-copy'>
+            <div className='education-heading-row'>
+              <span className='education-kicker'>
+                <FaCertificate aria-hidden='true' />
+                Certification
+              </span>
+              <span className='education-period'>
+                Issued {featuredCertification.issued} | Valid through {featuredCertification.validThrough}
+              </span>
+            </div>
 
-        <article className='skills-group'>
-          <h3 className='skills-title'>Databases</h3>
-          <div className='skills-tags'>
-            <span className='skill-tag'>SQL Server</span>
-            <span className='skill-tag'>PostgreSQL</span>
-            <span className='skill-tag'>T-SQL</span>
-            <span className='skill-tag'>Stored Procedures</span>
-            <span className='skill-tag'>Triggers</span>
-            <span className='skill-tag'>Functions & Views</span>
+            <h3 className='project-title'>{featuredCertification.title}</h3>
+            <p className='education-credential'>Credential: {featuredCertification.credential}</p>
+            <p className='project-summary'>{featuredCertification.summary}</p>
           </div>
-        </article>
 
-        <article className='skills-group'>
-          <h3 className='skills-title'>Cloud & Infrastructure</h3>
-          <div className='skills-tags'>
-            <span className='skill-tag'>AWS EC2</span>
-            <span className='skill-tag'>AWS RDS</span>
-            <span className='skill-tag'>AWS S3</span>
-            <span className='skill-tag'>AWS Lambda</span>
-            <span className='skill-tag'>Linux Admin</span>
-            <span className='skill-tag'>NGINX</span>
-            <span className='skill-tag'>Gunicorn</span>
-          </div>
-        </article>
+          <ul className='project-highlight-list'>
+            {featuredCertification.bullets.map((bullet) => (
+              <li key={bullet}>{bullet}</li>
+            ))}
+          </ul>
 
-        <article className='skills-group'>
-          <h3 className='skills-title'>Architecture & DevOps</h3>
-          <div className='skills-tags'>
-            <span className='skill-tag'>REST APIs</span>
-            <span className='skill-tag'>JWT Authentication</span>
-            <span className='skill-tag'>Layered (n-tier)</span>
-            <span className='skill-tag'>CI/CD</span>
-            <span className='skill-tag'>Git Workflow</span>
+          <div className='education-actions'>
+            <a
+              href={featuredCertification.credentialUrl}
+              target='_blank'
+              rel='noopener noreferrer'
+              className='education-link'
+            >
+              View certification link
+              <FaArrowRight aria-hidden='true' />
+            </a>
           </div>
-        </article>
+        </div>
+      </article>
+
+      <div className='education-history'>
+        {educationHistory.map((item) => (
+          <article key={`${item.title}-${item.period}`} className='skills-group education-card'>
+            <div className='education-card-head'>
+              <div>
+                <h3 className='skills-title education-card-title'>{item.title}</h3>
+                <p className='education-card-school'>{item.institution}</p>
+              </div>
+              <span className='experience-dates'>{item.period}</span>
+            </div>
+            <p className='about-text'>{item.description}</p>
+          </article>
+        ))}
       </div>
     </section>
   );
 };
 
-export default Services;
+export default Education;

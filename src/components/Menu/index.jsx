@@ -24,13 +24,14 @@ const Menu = (props) => {
     setActiveMenu(currentSection || defaultSection);
   }, [currentSection]);
 
-
   return (
     <>
       <div className={`fold-button ${!foldMenu ? 'folded' : ''}`}>
         <button
           type='button'
-          className='icon-link icon-button'
+          className='sidebar-toggle icon-button'
+          aria-label={isMobile ? 'Toggle mobile menu' : 'Toggle sidebar'}
+          aria-expanded={isMobile ? mobileMenuOpen : foldMenu}
           onClick={() => {
             if (isMobile) {
               setMobileMenuOpen(!mobileMenuOpen);
@@ -38,22 +39,13 @@ const Menu = (props) => {
             }
             setFoldMenu(!foldMenu);
           }}
-          aria-label={isMobile ? (mobileMenuOpen ? 'Close menu' : 'Open menu') : (foldMenu ? 'Collapse menu' : 'Expand menu')}
         >
-          <Icons.FaBars />
-        </button>
-        {(isMobile || foldMenu) &&
           <img
             src={JnLogo}
             alt='JN Logo'
             className='sidebar-logo sidebar-logo-main'
-          />}
-        {(!isMobile && !foldMenu) &&
-          <img
-            src={JnLogo}
-            alt='JN Logo'
-            className='sidebar-logo sidebar-logo-compact'
-          />}
+          />
+        </button>
       </div>
       <div className={`menu-panel ${isMobile ? (mobileMenuOpen ? 'open' : '') : ''}`}>
         {!isMobile && foldMenu &&
@@ -63,38 +55,43 @@ const Menu = (props) => {
               alt='Profile'
               className='sidebar-image image-style sidebar-profile'
             />
+            <div className='menu-intro'>
+              <h2 className='menu-name'>Juan Navarro</h2>              
+              <span className='menu-status'>FULL STACK ENGINEER - CLOUD FOCUS</span>
+            </div>
           </div>
         }
 
         <ul className='menu-items'>
           {menuItems.map((item) => {
             const IconComponent = Icons[item.icon];
-            return (<li
-              key={item.name}
-              className={activeMenu === `${item.name}` ? 'active' : ''}
-              onClick={() => {
-                setActiveMenu(item.name);
-                if (setCurrentSection) {
-                  setCurrentSection(item.name);
-                }
-                if (isMobile) {
-                  setMobileMenuOpen(false);
-                }
-              }}
-            >
-              {(!foldMenu && !isMobile) &&
-                <button type='button' className='fold-menu icon-button'>
-                  <IconComponent />
-                  <span className='tooltip'>{item.text}</span>
-                </button>}
+            const isActive = activeMenu === item.name;
 
-              {(foldMenu || isMobile) && <>
-                <IconComponent />
-                {' '}
-                {item.text}
-              </>
-              }
-            </li>);
+            return (
+              <li
+                key={item.name}
+                className={isActive ? 'active' : ''}
+              >
+                <button
+                  type='button'
+                  className={`menu-action ${!foldMenu && !isMobile ? 'menu-action-compact' : ''}`}
+                  aria-current={isActive ? 'page' : undefined}
+                  onClick={() => {
+                    setActiveMenu(item.name);
+                    if (setCurrentSection) {
+                      setCurrentSection(item.name);
+                    }
+                    if (isMobile) {
+                      setMobileMenuOpen(false);
+                    }
+                  }}
+                >
+                  <IconComponent />
+                  {(foldMenu || isMobile) && <span>{item.text}</span>}
+                  {(!foldMenu && !isMobile) && <span className='tooltip'>{item.text}</span>}
+                </button>
+              </li>
+            );
           })}
         </ul>
 
@@ -107,24 +104,17 @@ const Menu = (props) => {
                   <a
                     href={item.link}
                     className='icon-link'
-                    target='_blank'
-                    rel='noopener noreferrer'
+                    target={item.link.startsWith('mailto:') ? undefined : '_blank'}
+                    rel={item.link.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
                   >
                     {ContactIcon ? (
-                      <ContactIcon
-                        aria-label={item.ariaLabel}
-                        style={{
-                          color: 'white',
-                          fontSize: '24px',
-                          transition: 'all 0.3s ease'
-                        }}
-                      />
+                      <ContactIcon aria-label={item.ariaLabel} className='contact-icon' />
                     ) : null}
                     <span className='tooltip'>{item.text}</span>
                   </a>
                 ) : (
                   <span className='icon-link'>
-                    {ContactIcon ? <ContactIcon aria-label={item.ariaLabel} /> : null}
+                    {ContactIcon ? <ContactIcon aria-label={item.ariaLabel} className='contact-icon' /> : null}
                     <span className='tooltip'>{item.text}</span>
                   </span>
                 );

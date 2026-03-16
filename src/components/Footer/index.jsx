@@ -7,7 +7,7 @@ const Footer = (props) => {
 
   return (
     <footer className={`footer-custom ${!foldMenu ? 'folded' : ''}`}>
-      Copyright Juan Navarro © {now.getFullYear()}
+      Juan Navarro © {now.getFullYear()} | Deployed on AWS S3 with Route 53 DNS and CloudFront delivery
     </footer>
   );
 };

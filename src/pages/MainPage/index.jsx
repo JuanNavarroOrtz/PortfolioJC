@@ -12,15 +12,26 @@ import Contact from '../Contact';
 import { menuItems } from '../../utils/data';
 
 const MOBILE_BREAKPOINT = 640;
+const SECTION_STORAGE_KEY = 'portfolio-current-section';
 
 const Portfolio = () => {
+  const defaultSection = menuItems[0]?.name || 'home';
+  const validSections = menuItems.map((item) => item.name);
   const [isMobile, setIsMobile] = useState(() => {
     if (typeof window === 'undefined') return false;
     return window.innerWidth <= MOBILE_BREAKPOINT;
   });
   const [foldMenu, setFoldMenu] = useState(true);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [currentSection, setCurrentSection] = useState(menuItems[0].name);
+  const [currentSection, setCurrentSection] = useState(() => {
+    // Restore the last visited section after reload, but only if it still exists.
+    if (typeof window === 'undefined') {
+      return defaultSection;
+    }
+
+    const savedSection = window.localStorage.getItem(SECTION_STORAGE_KEY);
+    return validSections.includes(savedSection) ? savedSection : defaultSection;
+  });
 
   const sectionComponents = {
     home: Home,
@@ -37,6 +48,7 @@ const Portfolio = () => {
     if (typeof window === 'undefined') return undefined;
 
     const mobileQuery = window.matchMedia(`(max-width: ${MOBILE_BREAKPOINT}px)`);
+    // Keep sidebar behavior in sync with the current viewport mode.
     const syncMenuByViewport = (event) => {
       const matches = event.matches;
       setIsMobile(matches);
@@ -57,6 +69,15 @@ const Portfolio = () => {
     mobileQuery.addListener(syncMenuByViewport);
     return () => mobileQuery.removeListener(syncMenuByViewport);
   }, []);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') {
+      return;
+    }
+
+    // Persist menu selection so refresh keeps the same active section.
+    window.localStorage.setItem(SECTION_STORAGE_KEY, currentSection);
+  }, [currentSection]);
 
   return (
     <div className='app-shell'>

@@ -1,24 +1,24 @@
 import { FaUser } from 'react-icons/fa';
+import { homeContent } from '../../utils/data';
 
-const About = () => {
+const Home = () => {
   return (
     <section className='about-section resume-style'>
       <div className='section-heading'>
         <span className='section-icon' aria-hidden='true'>
           <FaUser />
         </span>
-        <h2 className='about-title'>Profile</h2>
+        <h2 className='about-title'>{homeContent.title}</h2>
       </div>
       <div className='about-content'>
-        <p className='about-text'>
-          Full Stack Engineer with 6 years of experience building and maintaining backend-focused
-          business systems in financial and logistics environments. Strong background in API development,
-          relational databases and production infrastructure management. Experience working with cloud-based
-          deployments and maintaining live systems, continuously improving performance, reliability and code quality.
-        </p>
+        {homeContent.paragraphs.map((paragraph) => (
+          <p key={paragraph} className='about-text'>
+            {paragraph}
+          </p>
+        ))}
       </div>
     </section>
   );
 };
 
-export default About;
+export default Home;

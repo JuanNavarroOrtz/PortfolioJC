@@ -1,28 +1,27 @@
 /*SIDEBAR*/
 .sidebar-image {
   border-radius: var(--radius-pill);
+  border: 3px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 16px 30px rgba(6, 18, 38, 0.22);
 }
 
 .sidebar-profile {
-  width: 70%;
-  max-width: 200px;
+  width: 64%;
+  max-width: 148px;
   margin: 0 auto;
   display: block;
-  padding: var(--space-sm) 0;
+  padding: 0;
 }
 
 .sidebar-logo-main {
-  width: 120px;
-  height: auto;
-  max-width: 120px;
-  margin-left: var(--space-xs);
+  max-width: 40px;
+  margin-left: 0;
   display: block;
   opacity: 0.96;
 }
 
-.sidebar-logo-compact {
-  width: 72px;
-  max-width: 72px;
+.sidebar-logo-compact {  
+  max-width: 30px;
   margin-left: 4px;
   display: block;
   opacity: 0.92;
@@ -30,33 +29,64 @@
 
 /*Menu*/
 .menu-header {
-  padding: var(--space-lg) var(--space-2xl);
-  font-weight: var(--font-weight-title);
-  font-size: var(--font-size-subtitle);
-  letter-spacing: var(--letter-spacing-title);
+  padding: 20px 22px 18px;
   border-bottom: 1px solid var(--color-border-sidebar);
-  margin-bottom: var(--space-lg);
-  text-transform: uppercase;
+  margin-bottom: 12px;
+  text-align: center;
+  background:
+    radial-gradient(circle at top, rgba(96, 188, 206, 0.14), transparent 62%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0));
+}
+
+.menu-intro {
+  display: grid;
+  gap: 6px;
+  margin-top: 14px;
+}
+
+.menu-name {
+  margin: 0;
+  color: var(--color-text-on-dark);
+  font-size: 1.2rem;
+  font-weight: var(--font-weight-title);
+  letter-spacing: 0.02em;
+}
+
+.menu-role {
+  margin: 0;
+  color: var(--color-text-on-dark-soft);
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.menu-status {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  max-width: 100%;
+  margin: 4px auto 0;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(96, 188, 206, 0.14);
+  color: #bfeaf2;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
 }
 
 .menu-items {
   list-style: none;
   padding: 0;
   margin: 0;
+  display: grid;
+  gap: 2px;
+  align-content: start;
 }
 
 .menu-items li {
-  padding: var(--space-md) var(--space-2xl);
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  cursor: pointer;
-  transition: background var(--motion-base);
-  border-bottom: 1px solid var(--color-border-sidebar);
-  line-height: 1.25;
-  font-size: var(--font-size-body);
-  font-weight: 600;
-  letter-spacing: 0.01em;
+  position: relative;
+  margin: 0 10px;
 }
 
 .menu-items li svg {
@@ -65,40 +95,111 @@
   text-align: center;
 }
 
+.menu-action {
+  width: 100%;
+  min-height: 50px;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: 0;
+  border-radius: 14px;
+  color: var(--color-text-on-dark-soft);
+  background: transparent;
+  cursor: pointer;
+  transition: background var(--motion-base), color var(--motion-base), transform var(--motion-base);
+  line-height: 1.25;
+  font-size: var(--font-size-body);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  text-align: left;
+}
+
+.menu-action::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  bottom: 8px;
+  width: 4px;
+  border-radius: 999px;
+  background: #5fb3ff;
+  opacity: 0;
+  transform: scaleY(0.4);
+  transition: opacity var(--motion-fast), transform var(--motion-fast);
+}
+
 .sidebar-logo:hover {
   transform: scale(1.05);
 }
 
-.menu-items li:hover {
-  background: var(--color-bg-sidebar-hover);
+.menu-action:hover,
+.menu-action:focus-visible {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--color-text-on-dark);
+  outline: none;
 }
 
-.menu-items li.active {
-  background: var(--color-bg-sidebar-hover);
+.menu-action:hover {
+  transform: translateX(2px);
+}
+
+.menu-items li.active .menu-action {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--color-text-on-dark);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.menu-items li.active .menu-action::before {
+  opacity: 1;
+  transform: scaleY(1);
 }
 
 /*FOLD BUTTON AND LOGO*/
 .fold-button {
-  padding-left: var(--space-md);
+  padding: 0 14px;
   display: flex;
   align-items: center;
-  gap: 6px;
+  justify-content: flex-start;
+  height: var(--layout-header);
   min-height: var(--layout-header);
+  border-bottom: 1px solid var(--color-border-sidebar);
+  box-sizing: border-box;
 }
 
 .fold-button.folded {
-  flex-direction: row;
-  padding-left: 0;
+  padding: 0;
   justify-content: center;
-  align-items: center;
 }
 
 .fold-button.folded .sidebar-logo-compact {
   display: none;
 }
 
-.fold-menu {
+.sidebar-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 14px;
+  transition: background var(--motion-base), transform var(--motion-base);
+}
+
+.sidebar-toggle:hover,
+.sidebar-toggle:focus-visible {
+  background: rgba(255, 255, 255, 0.08);
+  outline: none;
+}
+
+.menu-action-compact {
   position: relative;
+  justify-content: center;
+  padding: 12px 0;
+}
+
+.menu-action-compact::before {
+  left: 6px;
 }
 
 .menu-panel {
@@ -106,18 +207,21 @@
 }
 
 .sidebar.folded .menu-items li {
-  padding: var(--space-md) 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+  margin: 0 6px;
 }
 
-.sidebar.folded .fold-menu {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.sidebar.folded .menu-action {
+  min-height: 44px;
+  border-radius: 12px;
+}
+
+.sidebar.folded .menu-items {
+  gap: 0;
+  padding-top: 4px;
+}
+
+.sidebar.folded .menu-action-compact {
+  padding: 10px 0;
 }
 
 .icon-button {
@@ -134,7 +238,7 @@
 }
 
 .sidebar-logo:hover {
-  transform: scale(1.02);
+  transform: scale(1.08);
   opacity: 1;
 }
 
@@ -145,7 +249,8 @@
   display: flex;
   justify-content: center;
   gap: var(--space-2xl);
-  padding: var(--space-lg) 0;
+  margin-top: auto;
+  padding: 22px 0 26px;
 }
 
 .icon-wrapper {
@@ -155,7 +260,7 @@
 
 .icon-link {
   position: relative;
-  color: var(--color-bg-surface);
+  color: var(--color-text-on-dark-soft);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -163,17 +268,28 @@
   height: var(--size-icon-md);
   border-radius: var(--radius-pill);
   transition: all var(--motion-base) ease;
+  text-decoration: none;
 }
 
 .icon-link:hover {
-  background: var(--overlay-soft);
+  background: rgba(255, 255, 255, 0.08);
   transform: translateY(-3px);
+  color: var(--color-text-on-dark);
+}
+
+.contact-icon {
+  font-size: 24px;
+  transition: transform var(--motion-base) ease;
+}
+
+.icon-link:hover .contact-icon {
+  transform: scale(1.05);
 }
 
 .tooltip {
   visibility: hidden;
   width: max-content;
-  max-width: 220px;
+  max-width: min(220px, calc(100vw - 32px));
   background-color: var(--overlay-tooltip);
   color: var(--color-bg-surface);
   text-align: left;
@@ -211,7 +327,23 @@
   transform: translateX(calc(-50% + 20px)) translateY(0);
 }
 
-.fold-menu:hover .tooltip {
+.container-menu-icons .icon-wrapper:first-child .tooltip {
+  left: 0;
+  transform: translateX(0);
+}
+
+.container-menu-icons .icon-wrapper:first-child .tooltip::after {
+  left: 20px;
+  transform: none;
+}
+
+.container-menu-icons .icon-wrapper:first-child .icon-link:hover .tooltip,
+.container-menu-icons .icon-wrapper:first-child .icon-link:focus-visible .tooltip {
+  transform: translateX(0) translateY(0);
+}
+
+.menu-action-compact:hover .tooltip,
+.menu-action-compact:focus-visible .tooltip {
   visibility: visible;
   opacity: 1;
   transform: translateX(calc(-50% + 20px)) translateY(0);
@@ -240,7 +372,6 @@
     justify-content: flex-start;
     align-items: center;
     padding: 0 var(--space-md);
-    gap: var(--space-sm);
     min-height: var(--layout-header);
     width: 100%;
     height: var(--layout-header);
@@ -250,15 +381,13 @@
     z-index: 22;
   }
 
-  .sidebar-logo-main {
-    width: 96px;
-    max-width: 96px;
+  .sidebar-logo-main {  
+    max-width: 50px;
     margin-left: 0;
   }
 
-  .sidebar-logo-compact {
-    width: 78px;
-    max-width: 78px;
+  .sidebar-logo-compact {    
+    max-width: 40px;
     margin-left: 0;
   }
 
@@ -290,16 +419,14 @@
 
   .menu-panel .menu-items li,
   .sidebar.folded .menu-items li {
-    padding: var(--space-md) var(--space-2xl);
-    justify-content: flex-start;
-    text-align: left;
-    font-size: 1.05rem;
+    margin: 0 10px;
   }
 
-  .menu-panel .fold-menu,
-  .sidebar.folded .fold-menu {
-    width: auto;
+  .menu-panel .menu-action,
+  .sidebar.folded .menu-action {
     justify-content: flex-start;
+    padding: 14px 16px;
+    font-size: 1rem;
   }
 
   .container-menu-icons,
