@@ -100,12 +100,13 @@ const Menu = (props) => {
             <div key={index} className='icon-wrapper'>
               {(() => {
                 const ContactIcon = Icons[item.icon];
+
                 return item.link ? (
                   <a
                     href={item.link}
                     className='icon-link'
-                    target={item.link.startsWith('mailto:') ? undefined : '_blank'}
-                    rel={item.link.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
+                    target='_blank'
+                    rel='noopener noreferrer'
                   >
                     {ContactIcon ? (
                       <ContactIcon aria-label={item.ariaLabel} className='contact-icon' />

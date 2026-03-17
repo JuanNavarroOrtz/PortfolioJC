@@ -45,6 +45,7 @@ import projectAppDiagram from '../assets/Img/app/diagram.png';
 import projectAppLogin from '../assets/Img/app/login.png';
 import projectAppNewOrden from '../assets/Img/app/newOrden.png';
 import projectAppOrdenList from '../assets/Img/app/ordenList.png';
+import projectAlmDiagram from '../assets/Img/alm/diagram.png';
 
 export const menuItems = [
   { name: 'home', text: 'Home', icon: 'FaHome' },
@@ -61,7 +62,7 @@ export const contactItems = [
     icon: 'FaEnvelope',
     ariaLabel: 'Email',
     text: 'juan.navarro.ortz@gmail.com',
-    link: 'mailto:juan.navarro.ortz@gmail.com?subject=Portfolio%20Contact&body=Hi%20Juan%2C%0A%0AI%20would%20like%20to%20talk%20about...'
+    link: 'https://mail.google.com/mail/?view=cm&fs=1&to=juan.navarro.ortz@gmail.com&su=Portfolio%20Contact&body=Hi%20Juan%2C%0A%0AI%20would%20like%20to%20talk%20about...'
   },
   {
     icon: 'FaLinkedinIn',
@@ -104,9 +105,10 @@ export const contactFacts = [
 export const homeContent = {
   title: 'Profile',
   paragraphs: [
-    'Full Stack Engineer with 6 years of experience building and maintaining backend-focused business systems in financial and logistics environments.',
-    'Strong background in API development, relational databases, and production infrastructure management.',
-    'Experience working with cloud-based deployments and maintaining live systems, continuously improving performance, reliability, and code quality.'
+    'Full Stack Engineer with 6+ years of experience building and maintaining enterprise systems in financial and logistics environments, with a strong backend and cloud focus.',
+    'Experienced in designing REST APIs, optimizing relational databases, and implementing complex business logic for high-impact operational systems.',
+    'Hands-on experience deploying and managing production infrastructure on AWS, including EC2 (Linux), RDS, and S3, with NGINX and Gunicorn configurations for secure and scalable applications.',
+    'Proven ability to contribute across the full stack, including React-based systems, while continuously improving system performance, reliability, and architecture.'
   ]
 };
 
@@ -236,6 +238,30 @@ export const projectItems = [
     ctaAriaLabel: 'Open Cash Logistics Platform gallery from View architecture'
   },
   {
+    title: 'Almacenadora LAFISE Systems',
+    category: 'Enterprise Financial & Logistics Systems',
+    galleryKey: 'alm',
+    galleryLabel: 'Open gallery',
+    galleryTitle: 'Almacenadora LAFISE Systems Gallery',
+    imageButtonLabel: 'Open Almacenadora LAFISE Systems gallery',
+    image: projectAlmDiagram,
+    imageAlt: 'Financial and logistics systems used in warehouse and banking operations',
+    summary: 'Enterprise systems supporting warehouse logistics, financial operations and banking integrations within Almacenadora LAFISE.',
+    highlights: [
+      'Deployed production web systems on AWS using EC2 (Linux) and RDS for PostgreSQL.',
+      'Configured NGINX and Gunicorn with socket-based communication and custom port exposure for secure public access.',
+      'Implemented HTTPS configuration for externally accessible services.',
+      'Migrated server file storage to AWS S3 for scalable document and asset management.',
+      'Deployed a public static web application using AWS S3 static hosting.',
+      'Developed REST APIs and backend logic for logistics and financial operations.',
+      'Contributed to the team that built the company’s first operational React-based system.'
+    ],
+    stack: ['C#', 'ASP.NET MVC', 'Django', 'PostgreSQL', 'SQL Server', 'React', 'AWS EC2', 'RDS', 'S3', 'NGINX', 'Gunicorn', 'Linux'],
+    impact: 'Delivered production infrastructure and backend services supporting warehouse logistics, financial modules and operational systems in a banking environment.',
+    ctaLabel: 'System architecture',
+    ctaAriaLabel: 'Open Almacenadora LAFISE Systems gallery from System architecture'
+  },
+  {
     title: 'I-Cargo Logistics Suite',
     category: 'Freelance Product Build',
     galleryKey: 'icargo',
@@ -292,21 +318,6 @@ export const projectItems = [
     impact: 'Designed as a scalable business system starting with order capture and expanding into inventory and invoicing management.',
     ctaLabel: 'View mobile app screens',
     ctaAriaLabel: 'Open Mobile Sales & Inventory App gallery from View mobile app screens'
-  },
-  {
-    title: 'Developer Portfolio',
-    category: 'Personal Brand',
-    image: projectPlaceholder,
-    imageAlt: 'Developer portfolio preview placeholder',
-    summary: 'Portfolio website built to present experience, projects, and technical strengths with a cleaner resume-style layout.',
-    highlights: [
-      'Data-driven React structure for sections, navigation, project cards, and modal galleries.',
-      'Responsive layout optimized for both desktop and mobile reading.',
-      'Refined project showcase flow with reusable gallery behavior and cleaner content hierarchy.'
-    ],
-    stack: ['React', 'Vite', 'CSS', 'React Icons'],
-    impact: 'Designed as a living portfolio that can keep evolving with new projects and screenshots.',
-    ctaLabel: 'Portfolio preview'
   }
 ];
 
@@ -337,6 +348,13 @@ export const projectGalleries = {
       id: 'ultraval-react-native',
       src: projectUltravalReactNative,
       alt: 'Ultraval enterprise system React Native mobile interface'
+    }
+  ],
+  alm: [
+    {
+      id: 'alm-diagram',
+      src: projectAlmDiagram,
+      alt: 'Almacenadora LAFISE systems architecture diagram'
     }
   ],
   icargo: [

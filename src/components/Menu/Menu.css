@@ -266,15 +266,21 @@
   justify-content: center;
   width: var(--size-icon-md);
   height: var(--size-icon-md);
+  padding: 0;
+  border: 0;
   border-radius: var(--radius-pill);
+  background: transparent;
+  cursor: pointer;
   transition: all var(--motion-base) ease;
   text-decoration: none;
 }
 
-.icon-link:hover {
+.icon-link:hover,
+.icon-link:focus-visible {
   background: rgba(255, 255, 255, 0.08);
   transform: translateY(-3px);
   color: var(--color-text-on-dark);
+  outline: none;
 }
 
 .contact-icon {
@@ -321,7 +327,8 @@
   border-color: var(--overlay-tooltip) transparent transparent transparent;
 }
 
-.icon-link:hover .tooltip {
+.icon-link:hover .tooltip,
+.icon-link:focus-visible .tooltip {
   visibility: visible;
   opacity: 1;
   transform: translateX(calc(-50% + 20px)) translateY(0);

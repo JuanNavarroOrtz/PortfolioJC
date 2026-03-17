@@ -12,9 +12,13 @@ const Home = () => {
       </div>
       <div className='about-content'>
         {homeContent.paragraphs.map((paragraph) => (
-          <p key={paragraph} className='about-text'>
-            {paragraph}
-          </p>
+          <ul>
+            <li key={paragraph}>
+              <p key={paragraph} className='about-text'>
+                {paragraph}
+              </p>
+            </li>
+          </ul>
         ))}
       </div>
     </section>
